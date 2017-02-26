@@ -1,0 +1,26 @@
+.feedback {
+  
+  font-weight: bold;
+  background-color: black;
+  display: inline-block;
+  padding: 0.1em;
+
+  &--hidden {
+  	visibility: none;
+  }
+
+  &--error {
+    color: red;
+    border: red solid 1px;
+  }
+
+  &--warning {
+    color: orange;
+    border: orange solid 1px;
+  }
+
+  &--success {
+    color: green;
+    border: green solid 1px;
+  }
+}

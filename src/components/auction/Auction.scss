@@ -1,0 +1,31 @@
+.auction {
+  border: black solid;
+  background-color: black;
+
+  &_title  {
+  	font-size: 1.5em;
+    height: 2em;
+    color: white;
+    background: black;
+    text-align: center;
+    padding-top: 0.5em;
+  }
+
+  &_time-remaining {
+  	display: flex;
+    background: black;
+  }
+
+  &_body {
+  	background: black;
+    margin: 1.5em 0 0 0;
+
+    .auction-controls {
+      margin: auto;
+    }
+  }
+  
+  .pie-timer {
+    margin: -6px 0 0 6px;
+  }
+}

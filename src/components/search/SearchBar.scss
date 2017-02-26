@@ -1,0 +1,31 @@
+.search-bar {
+  
+  min-width: 23em;
+  width: 24em;
+
+  .--hidden {
+  	visibility: hidden;
+  }
+  
+  &_label {
+    margin-right: 0.5em;
+  }
+
+  &_input {
+    margin-right: 0.5em;
+  }
+
+  &_submit {
+
+  }
+
+  &_suggestions {
+    list-style: none;
+    background-color: white;
+    padding: 0.25em;
+    width: 75%;
+    margin: .2em;
+    border: solid black 0.2em;
+    color: black;
+  }
+}

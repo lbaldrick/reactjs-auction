@@ -1,0 +1,20 @@
+.pie-timer {
+
+	height: 68px;
+	width: 65px;
+	transform: rotate(270deg);
+
+  &_timer {
+    stroke: green;
+    stroke-dashoffset: 44;
+    stroke-dasharray: 44;
+    stroke-width: 14;
+    z-index: 1;
+  }
+
+  @keyframes draw {
+  	100% {
+  	  stroke-dashoffset: 0;
+  	}
+  }
+}

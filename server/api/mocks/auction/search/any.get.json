@@ -1,0 +1,41 @@
+{
+ "items": [
+  {
+    "title": "Nintendo 3ds blue",
+    "summary": "Nintendo 3ds blue",
+    "description": "Nintendo 3ds blue",
+    "endTimestamp": 1484087993,
+    "startTimestamp": 1484007993,
+    "askingPrice": 150,
+    "currentBid": 100,
+    "history": [
+      {
+        "userId": "baldy",
+        "timestamp": 1484007993,
+        "bid": 12.98
+      },
+      {
+        "userId": "irish_man",
+        "timestamp": 1484007893,
+        "bid": 11.98
+      }
+    ]
+  },
+  {
+    "title": "Nintendo 3ds red",
+    "summary": "Nintendo 3ds red",
+    "description": "Nintendo 3ds red",
+    "endTimestamp": 1484087993,	
+    "startTimestamp": 1484007993,
+    "askingPrice": 150,
+    "currentBid": 100,
+    "history": [
+      {
+        "userId": "baldy",
+        "timestamp": 1484007993,
+        "bid": 12.98
+      }
+    ]
+   }
+  ]
+}

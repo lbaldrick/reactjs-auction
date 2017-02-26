@@ -1,0 +1,26 @@
+.enhanced-page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;	
+  background: linear-gradient(#FAFAFA, #424242); 
+  height: 40em;
+
+  &_header {
+  	height: 3em;
+    background: black;
+    color: white;
+
+    .search-bar {
+      padding: 0.5em;
+    }
+  }
+
+  &_content {
+    &_search-results {
+      display: flex;
+      height: 32em;
+    }
+  }
+}
