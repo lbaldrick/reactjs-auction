@@ -3,6 +3,7 @@ import style from './EnhancedPage.scss';
 import Auction from '../auction/Auction.jsx';
 import Search from '../search/Search.jsx';
 import SearchResults from '../search_results/SearchResults.jsx';
+import AuctionDetails from '../auction_details/AuctionDetails.jsx';
 
 export default class EnhancedPage extends React.Component {
 
@@ -19,6 +20,7 @@ export default class EnhancedPage extends React.Component {
         <div className="enhanced-page_content_search-results">
           <SearchResults store={this.props.store}/>
           <Auction/>
+          <AuctionDetails store={this.props.store}/>
         </div>
         
         

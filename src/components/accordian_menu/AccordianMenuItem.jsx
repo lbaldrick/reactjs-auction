@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './AccordianMenuItem.scss';
 
 export default class AccordianMenuItem extends React.Component {
 
@@ -16,9 +17,11 @@ export default class AccordianMenuItem extends React.Component {
 	}
 
 	render() {
-		<li className={ this.state.isSelected ? 'AccordianMenuItem AccordianMenuItem--selected' : 'AccordianMenuItem' }>
-			<span class="AccordianMenuItem_menu" onClick={ (event) => this.onClick(event)}>{ this.props.displayName }</span>
-			<div class="AccordianMenuItem_details"> { props.details }</div>
+		return <li className={ this.state.isSelected ? 'AccordianMenuItem AccordianMenuItem--selected' : 'AccordianMenuItem' }>
+			<span className="AccordianMenuItem_menu" onClick={ (event) => this.onClick(event)}>
+				{ this.props.displayName }
+			</span>
+			<div className="AccordianMenuItem_details"> { this.props.children } </div>
 		</li>
 	}
 } 

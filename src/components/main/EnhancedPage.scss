@@ -21,6 +21,11 @@
     &_search-results {
       display: flex;
       height: 32em;
+
+      .table {
+        width: 33em;
+        min-width: 33em;
+      }
     }
   }
 }

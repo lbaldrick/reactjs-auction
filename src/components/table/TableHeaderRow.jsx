@@ -9,10 +9,10 @@ const defaultColumnConfig = {
 const TableHeaderRow = ({ headers, columnsConfig }) => {
 	return <ul className="TableHeaderRow"> 
 		{ 
-	       headers.map((header) => {
+	       headers.map(({ id, displayName }) => {
 	        return <TableHeaderCell 
-	          displayName={ header.displayName }
-	          style={ columnsConfig ? columnsConfig[header.id] : defaultColumnConfig }
+	          displayName={ displayName }
+	          style={ columnsConfig ? columnsConfig.getIn([id, 'style']).toObject() : defaultColumnConfig }
 	          />
 	       }) 
 	   

@@ -6,6 +6,6 @@ const opts = {
     cors_headers: ["Content-Type", "Location"],
      };
 
-can = canned('C:/Dev/javascript/reactjs/auction/server/api/mocks', opts)
+can = canned('C:/Users/micha/dev/frontend/reactjs/reactjs-auction/server/api/mocks', opts)
 
 http.createServer(can).listen(3000);

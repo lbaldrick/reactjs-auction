@@ -28,4 +28,9 @@
     border: solid black 0.2em;
     color: black;
   }
+
+  .dropdown {
+    z-index: 1;
+    position: relative;
+  }
 }

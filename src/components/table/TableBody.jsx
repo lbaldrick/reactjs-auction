@@ -16,7 +16,7 @@ const TableBody = ({ records, columnsConfig, columnOrder, onRowClicked }) => {
 				cells={ columnOrder.map((key) => {
 							return { 
 								displayName: record[key],
-								style: columnsConfig ? columnsConfig[key] : defaultColumnConfig,
+								style: columnsConfig ? columnsConfig.getIn([key, 'style']).toObject() : defaultColumnConfig,
 							};
 								
 						})
@@ -26,6 +26,5 @@ const TableBody = ({ records, columnsConfig, columnOrder, onRowClicked }) => {
 		}
 	</div>
 }
-
 
 export default TableBody;

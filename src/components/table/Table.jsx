@@ -6,7 +6,7 @@ import TableBody from './TableBody.jsx';
 export default class Table extends React.Component {
 
 	render() {
-		return <div className="Table">
+		return <div className="table">
 			<TableHeaderRow 
 			headers={ this.props.headers }
 			columnsConfig={ this.props.columnsConfig }
