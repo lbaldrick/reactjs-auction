@@ -6,10 +6,6 @@ import Feedback from '../Feedback/Feedback.jsx';
 import Dropdown from '../Dropdown/Dropdown.jsx';
 import SearchBar from './SearchBar.jsx';
 
-const PLACEHOLDER_TEXT = 'Enter text...';
-
-const SEARCH_BUTTON_TEXT = 'search';
-
 class Search extends React.Component {
 
   constructor(props) {

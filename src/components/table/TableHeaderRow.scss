@@ -1,9 +1,11 @@
+$base-color: #212F3D;
+
 .TableHeaderRow {
 	margin: 0;
     list-style: none;
     border-bottom: 1px solid;
     padding: 0.25em;
     text-align: left;
-    background: black;
+    background: $base-color;
     color: white;
 }

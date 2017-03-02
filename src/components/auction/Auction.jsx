@@ -35,7 +35,6 @@ export default class Auction extends React.Component {
   render() {
      return ( 
        <div className='auction'>
-         <div className='auction_title'> Nintendo 3ds </div>
          <Carousel images={this.images} />
          <div className='auction_time-remaining'>
            <CountdownTimer endTimestamp={1486026721000} />

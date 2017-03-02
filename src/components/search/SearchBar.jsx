@@ -7,9 +7,11 @@ const PLACEHOLDER_TEXT = 'Enter text...';
 
 const SEARCH_BUTTON_TEXT = 'search';
 
+const SEARCH_LABEL = 'Search:';
+
 const searchBar = ({ onKeyDown, handleQueryChange, onSubmit, onItemClicked, query, feedbackType, feedbackMessage, selectedId, suggestions,}) => {
     return <div className="search-bar">
-      	<label className="search-bar_label">Search</label> 
+      	<label className="search-bar_label">{ SEARCH_LABEL }</label> 
       	<input 
           className="search-bar_input" type="text" 
           placeholder={ PLACEHOLDER_TEXT }

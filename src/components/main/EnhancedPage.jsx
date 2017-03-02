@@ -14,6 +14,7 @@ export default class EnhancedPage extends React.Component {
   render() {
   	return <div className="enhanced-page">
   	  <div className="enhanced-page_header">
+        <div className="enhanced-page_header_title">AUCTION</div>
  		    <Search store={this.props.store}/>
   	  </div>
   	  <div className="enhanced-page_content">

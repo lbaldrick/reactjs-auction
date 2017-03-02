@@ -1,5 +1,8 @@
+$base-color: #212F3D;
+
 .AuctionDetails {
   width: 24em;
-  background: black;
+  background: $base-color;
+  border: black solid 0.1em;
   color: white;
 }

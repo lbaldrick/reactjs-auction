@@ -3,4 +3,44 @@
   	list-style: none;
   	padding: 0;
   }
+
+  &_menu {
+  	width: 100%;
+    text-align: left;
+    padding: 0.5em;
+    background: #12426D;
+    color: white;
+    border: #081927 solid 0.1em;
+    cursor: pointer;
+
+    &:hover {
+      background: white;
+      color: black;
+    }
+  }
+
+  &_details {
+  	&--hidden {
+  	  visibility: hidden;
+  	  height: 0;
+  	}
+
+  	&--visible {
+  	  animation-duration: 1s;
+      animation-name: slidedown;
+      animation-fill-mode: forwards
+  	}
+  }
+
+  @keyframes slidedown {
+  	from {
+      height: 0;
+    }
+
+    to {
+      height: 3em;
+    }
+  }
+ 
 }
+

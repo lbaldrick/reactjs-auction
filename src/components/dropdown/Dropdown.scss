@@ -1,6 +1,8 @@
+$base-color: #212F3D;
+
 .dropdown {
   background-color: white;
-  color: black;
+  color: $base-color;
 
   &_list {
     list-style: none;

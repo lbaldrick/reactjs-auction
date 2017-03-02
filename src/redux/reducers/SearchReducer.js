@@ -16,10 +16,10 @@ const SEARCH_HEADERS = Immutable.List([
     displayName: 'Start Time',
   }, 
   { id: 'askingPrice',
-    displayName: 'Ask Price',
+    displayName: 'Price',
   }, 
   { id: 'currentBid',
-    displayName: 'Current Bid',
+    displayName: 'Bid',
   },
 ]);
 
@@ -47,11 +47,13 @@ const columnsConfig = {
    askingPrice: {
     style: {
       width: '60px',
+      ['text-align']: 'center',
     }
   },
    currentBid: {
     style: {
       width: '60px',
+      ['text-align']: 'center',
     }
   }
 }

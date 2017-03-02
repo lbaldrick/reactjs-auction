@@ -13,6 +13,11 @@ const MENU_ITEMS = [
 		displayName: 'History',
 		details: (historyItems) => BiddingHistory(historyItems),
 		propName: 'historyItems',
+	},
+	{
+		displayName: 'History',
+		details: (historyItems) => BiddingHistory(historyItems),
+		propName: 'historyItems',
 	}
 ];
 

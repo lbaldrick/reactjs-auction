@@ -1,7 +1,9 @@
+$base-color: #212F3D;
+
 .carousel {
   position: relative;
   overflow: hidden;
-  background: black;
+  background: $base-color;
 
   .--hidden {
     display: none;
@@ -9,7 +11,7 @@
 
   &_image-container {
     height: 16em;
-    border: solid 1px black;
+    border: solid 1px $base-color;
   }
 
   &_image-list {

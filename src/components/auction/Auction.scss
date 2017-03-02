@@ -1,23 +1,17 @@
-.auction {
-  border: black solid;
-  background-color: black;
+$base-color: #212F3D;
 
-  &_title  {
-  	font-size: 1.5em;
-    height: 2em;
-    color: white;
-    background: black;
-    text-align: center;
-    padding-top: 0.5em;
-  }
+.auction {
+  border: black solid 0.1em;
+  border-right: 0;
+  background-color: $base-color;
 
   &_time-remaining {
   	display: flex;
-    background: black;
+    background: #212F3D;
   }
 
   &_body {
-  	background: black;
+  	background: $base-color;
     margin: 1.5em 0 0 0;
 
     .auction-controls {

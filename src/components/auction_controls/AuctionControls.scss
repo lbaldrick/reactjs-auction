@@ -1,3 +1,5 @@
+$base-color: #212F3D;
+
 .auction-controls {
   display: flex;
   flex-direction: column;
@@ -13,7 +15,7 @@
 
   button:hover {
   	cursor: pointer;
-  	color: black;
+  	color: $base-color;
   	background: white;
   }
 
