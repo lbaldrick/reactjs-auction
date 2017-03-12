@@ -1,4 +1,4 @@
-.AccordianMenuItem {
+.accordian-menu-item {
   .bidding-history {
   	list-style: none;
   	padding: 0;
@@ -20,27 +20,17 @@
   }
 
   &_details {
+    background: white;
+    color: black;
+    
   	&--hidden {
   	  visibility: hidden;
   	  height: 0;
   	}
 
   	&--visible {
-  	  animation-duration: 1s;
-      animation-name: slidedown;
-      animation-fill-mode: forwards
+      min-height: 1em;
   	}
   }
-
-  @keyframes slidedown {
-  	from {
-      height: 0;
-    }
-
-    to {
-      height: 3em;
-    }
-  }
- 
 }
 

@@ -1,0 +1,19 @@
+.bidding-history {
+	&_item {
+		span {
+			display: inline-block;
+		}
+
+        &_timestamp {
+        	width: 6em;
+        }
+
+        &_user-id {
+			width: 5em;
+        }
+
+		&_bid {
+			width: 3em;
+		}
+	}
+}

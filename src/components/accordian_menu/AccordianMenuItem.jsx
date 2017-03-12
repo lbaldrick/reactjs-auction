@@ -17,12 +17,12 @@ export default class AccordianMenuItem extends React.Component {
 	}
 
 	render() {
-		return <li className="AccordianMenuItem">
-			<button className="AccordianMenuItem_menu" onClick={ (event) => this.onClick(event)}>
+		return <li className="accordian-menu-item">
+			<button className="accordian-menu-item_menu" onClick={ (event) => this.onClick(event)}>
 				{ this.props.displayName }
 			</button>
-			<div className={ this.state.isSelected ? 'AccordianMenuItem_details AccordianMenuItem_details--visible' : 
-			   'AccordianMenuItem_details AccordianMenuItem_details--hidden' }> { this.props.children } </div>
+			<div className={ this.state.isSelected ? 'accordian-menu-item_details accordian-menu-item_details--visible' : 
+			   'accordian-menu-item_details accordian-menu-item_details--hidden' }> { this.props.children } </div>
 		</li>
 	}
 } 

@@ -10,7 +10,6 @@ class SearchResults extends React.Component {
 			headers={ this.props.headers }
 			columnsConfig={ this.props.columnsConfig }
 		/>
-
 	}
 }
 

@@ -2,19 +2,25 @@ import React from 'react';
 import style from './Auction.scss';
 import AuctionControls from '../auction_controls/AuctionControls';
 import Carousel from '../carousel/Carousel';
-import BiddingHistory from '../bidding_history/BiddingHistory';
 import PieTimer from '../pie_timer/PieTimer';
 import CountdownTimer from '../countdown_timer/CountdownTimer';
 import x from '../../../img/Nintendo-3DS-AquaOpen.jpg';
 import y from '../../../img/Screenshot1.png';
 import z from '../../../img/Screenshot2.png';
+import { connect } from 'react-redux';
 
-export default class Auction extends React.Component {
-  constructor() {
-     super();
-     this.images = [x, y, z];
-     this.historyItems = [ { details: 'hello' } ];
+const mapStateToProps = (state) => {
+  const startTimestamp = state.getIn(['auctionDetails', 'startTimestamp']);
+  const endTimestamp = state.getIn(['auctionDetails', 'endTimestamp']);
+
+  return {
+    images: [x, y, z],
+    endTimestamp,
+    totalTime: endTimestamp - startTimestamp,
   }
+};
+
+class Auction extends React.Component {
 
   buyNow() {
     console.log('buy now');
@@ -35,10 +41,10 @@ export default class Auction extends React.Component {
   render() {
      return ( 
        <div className='auction'>
-         <Carousel images={this.images} />
+         <Carousel images={ this.props.images } />
          <div className='auction_time-remaining'>
-           <CountdownTimer endTimestamp={1486026721000} />
-           <PieTimer totalTime={500} />
+           <CountdownTimer endTimestamp={ this.props.endTimestamp } />
+           <PieTimer totalTime={ this.props.totalTime } />
          </div>
          <div className='auction_body'>
            <AuctionControls 
@@ -54,5 +60,6 @@ export default class Auction extends React.Component {
        </div>
     )
   }
-
 }
+
+export default connect(mapStateToProps)(Auction);

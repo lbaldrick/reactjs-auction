@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './CountdownTimer.scss';
+import moment from 'moment';
 
 const MILLISECONDS_IN_A_DAY = 86400000;
 
@@ -15,8 +16,6 @@ export default class CountdownTimer extends React.Component {
 
 	constructor(props) {
 	  super(props);
-
-	  this.endTimestamp = props.endTimestamp;
 	  this.state = {
 	  	daysLeft: 0,
 	  	hoursLeft: 0,
@@ -26,22 +25,27 @@ export default class CountdownTimer extends React.Component {
 	}
 
 	componentDidMount() {
-  	  this.startTimer(this.endTimestamp);
+  	  this.startTimer(this.props.endTimestamp);
+    }
+
+    componentWillReceiveProps(props) {
+      this.endTimer();
+      this.startTimer(props.endTimestamp)
     }
 
 	calculateTimeLeftProperties(endTimestamp=0) {
       const currentTimestamp = Date.now();
-      const millisecondsLeft = endTimestamp - currentTimestamp;
+      const millisecondsLeft = endTimestamp > 0 ? endTimestamp - currentTimestamp : 0;
       const daysLeft = Math.floor(millisecondsLeft / MILLISECONDS_IN_A_DAY);
       const hoursLeft = daysLeft ? Math.floor(millisecondsLeft / MILLISECONDS_IN_AN_HOUR) - (daysLeft * HOURS_IN_A_DAY) : Math.floor(millisecondsLeft / MILLISECONDS_IN_AN_HOUR);
       const minutesLeft = Math.floor((millisecondsLeft % MILLISECONDS_IN_AN_HOUR) / MILLISECONDS_IN_A_MINUTE);
       const secondsLeft = Math.floor((millisecondsLeft % MILLISECONDS_IN_A_MINUTE) / MILLISECONDS_IN_A_SECOND);
 
 	  return {
-        daysLeft, 
-        hoursLeft,
-        minutesLeft,
-        secondsLeft,
+        daysLeft: daysLeft > 0 ? daysLeft : 0, 
+        hoursLeft: hoursLeft > 0? hoursLeft : 0,
+        minutesLeft: minutesLeft > 0 ? minutesLeft : 0,
+        secondsLeft: secondsLeft > 0 ? secondsLeft : 0,
       };
 	}
 

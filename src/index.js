@@ -23,7 +23,7 @@ class Index {
       ReactDom.render(
       	<Provider store={store}>
       	  <EnhancedPage/>
-      	</Provider>,  
+      	</Provider>,
       	document.getElementById('app'));
    }
 

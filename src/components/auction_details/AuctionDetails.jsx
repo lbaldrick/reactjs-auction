@@ -2,6 +2,10 @@ import React from 'react';
 import style from './AuctionDetails.scss';
 import AccordianMenu from '../accordian_menu/AccordianMenu';
 import { connect } from 'react-redux';
+import BiddingHistory from './BiddingHistory';
+import ItemSpecifics from './ItemSpecifics';
+import SellerInformation from './SellerInformation';
+import ItemDescription from './ItemDescription';
 
 const MENU_ITEMS = [
 	{
@@ -14,36 +18,16 @@ const MENU_ITEMS = [
 		details: (historyItems) => BiddingHistory(historyItems),
 		propName: 'historyItems',
 	},
-	{
-		displayName: 'History',
-		details: (historyItems) => BiddingHistory(historyItems),
-		propName: 'historyItems',
-	}
+	// {
+	// 	displayName: 'Seller Information',
+	// 	details: (sellerInfo) => ItemSpecifics(sellerInfo),
+	// 	propName: 'sellerInfo',
+	// }
 ];
-
-const BiddingHistory = (historyItems) => {
-	return <ul className="bidding-history">
-		{
-			historyItems.map((item) => {
-				return <li className="bidding-history_item"> 
-					<span className="bidding-history_item_timestamp">{ item.timestamp }</span>
-					<span className="bidding-history_item_user-id">{ item.userId }</span>
-					<span className="bidding-history_item_bid">{ item.bid }</span>
-				</li>
-			})
-		}
-	</ul>
-};
-
-const ItemDescription = (description) => {
-	return <div className="item-description">
-		{ description }
-	</div>
-};
 
 const mapStateToProps = (state) => {
   return {
-    historyItems: state.getIn(['auctionDetails', 'historyItems']),
+    historyItems: state.getIn(['auctionDetails', 'history']).toJS(),
     description: state.getIn(['auctionDetails', 'description']),
     title: state.getIn(['auctionDetails', 'title']),
   }
@@ -55,7 +39,7 @@ class AuctionDetails extends React.Component {
     }
 
 	render() {
-		return <div className="AuctionDetails">
+		return <div className="auction-details">
 			<AccordianMenu 
 				items={ 
 					MENU_ITEMS.map(({ displayName, details, propName }) => {

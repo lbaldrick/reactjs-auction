@@ -1,5 +1,13 @@
 import { SEARCH_ACTION_ENUM } from '../action_creators/SearchActions';
 import Immutable from 'immutable';
+import { DateTimeFormat } from '../util/DateTime';
+
+const createResultViewRecord = (record) => {
+  const startDateTime = DateTimeFormat(record.startTimestamp);
+  const endDateTime = DateTimeFormat(record.endTimestamp);
+
+  return Object.assign({ startDateTime, endDateTime }, record)
+}
 
 
 const SEARCH_HEADERS = Immutable.List([
@@ -9,10 +17,10 @@ const SEARCH_HEADERS = Immutable.List([
   { id: 'summary',
     displayName: 'Summary',
   }, 
-  { id: 'endTimestamp',
+  { id: 'endDateTime',
     displayName: 'End Time',
   }, 
-  { id: 'startTimestamp',
+  { id: 'startDateTime',
     displayName: 'Start Time',
   }, 
   { id: 'askingPrice',
@@ -34,14 +42,14 @@ const columnsConfig = {
       width: '120px',
     }
   },
-   endTimestamp: {
+   endDateTime: {
     style: {
-      width: '80px',
+      width: '120px',
     }
   },
-   startTimestamp: {
+   startDateTime: {
     style: {
-      width: '80px',
+      width: '120px',
     }
   },
    askingPrice: {
@@ -60,24 +68,27 @@ const columnsConfig = {
 
 const INITIAL_STATE = Immutable.fromJS({
   search: {
-    items: [],
     query: '',
     error: null,
     notification: null,    
     feedbackType: null,
     feedbackMessage: null,
     headers: SEARCH_HEADERS,
-    columnsConfig: columnsConfig,
-    results: [],
+    columnsConfig,
+    results: Immutable.List([]),
   },
   suggestions: {
     selectedId: 0,
-    items: [],
+    items: Immutable.List([]),
   },
   auctionDetails: {
-    historyItems: [],
+    endTimestamp: 0,
+    startTimestamp: 0,
+    history: Immutable.List([]),
     description: null,
     title: null,
+    askingPrice: null,
+    currentBid: null,
   },
 });
 
@@ -88,19 +99,15 @@ const reducer = (state = INITIAL_STATE, action) => {
       break
     case SEARCH_ACTION_ENUM.SEARCH_SUCCESS:
       const results = action.payload.results;
-      const firstResult = results[0] || [];
-      const historyItems = firstResult ? Immutable.List(firstResult.history) : [];
-      const description = firstResult ? firstResult.description : null;
-      const title = firstResult ? firstResult.title : null;
+      const firstResult = results[0] || null;
+      const auctionDetails = firstResult ? Immutable.fromJS(firstResult) : null;
 
-      return state.setIn(['search', 'results'], Immutable.List(results))
+      return state.setIn(['search', 'results'], Immutable.List(results.map(createResultViewRecord)))
                .setIn(['suggestions', 'items'], Immutable.List([]))
                .setIn(['suggestions', 'selectedId'], null)
                .setIn(['search', 'feedbackMessage'], null)
                .setIn(['search', 'feedbackType'], null)
-               .setIn(['auctionDetails', 'historyItems'], historyItems)
-               .setIn(['auctionDetails', 'description'], description) 
-               .setIn(['auctionDetails', 'title'], title);
+               .set('auctionDetails', auctionDetails);
       break
     case SEARCH_ACTION_ENUM.SEARCH_FAILURE:
       return state.setIn(['search', 'feedbackMessage'], action.payload.feedback)

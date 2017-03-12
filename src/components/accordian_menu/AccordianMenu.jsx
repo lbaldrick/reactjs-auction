@@ -3,9 +3,9 @@ import AccordianMenuItem from './AccordianMenuItem';
 import style from './AccordianMenu.scss';
 
 const AccordianMenu = ({ items=[], title }) => {
-  	return <div className="AccordianMenu"> 
-      <div className="AccordianMenu_title"> { title } </div>
-      <ul className="AccordianMenu_list"> 
+  	return <div className="accordian-menu"> 
+      <div className="accordian-menu_title"> { title } </div>
+      <ul className="accordian-menu_list"> 
         {
          	items.map((item) => {
       			return <AccordianMenuItem
