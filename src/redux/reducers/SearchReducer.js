@@ -9,6 +9,21 @@ const createResultViewRecord = (record) => {
   return Object.assign({ startDateTime, endDateTime }, record)
 }
 
+const SELECT_VIEW_ENUM = {
+  BUY: 'BUY',
+  SELL: 'SELL',
+}
+
+const VIEW_TYPE_BUTTONS = Immutable.List([
+  {
+    id: SELECT_VIEW_ENUM.BUY,
+    displayName: 'Buy',
+  },
+  {
+    id: SELECT_VIEW_ENUM.SELL,
+    displayName: 'Sell',
+  },
+])
 
 const SEARCH_HEADERS = Immutable.List([
   { id: 'title',
@@ -67,6 +82,10 @@ const columnsConfig = {
 }
 
 const INITIAL_STATE = Immutable.fromJS({
+  view: {
+    selectedView: SELECT_VIEW_ENUM.BUY,
+    buttonDetails: VIEW_TYPE_BUTTONS,
+  },
   search: {
     query: '',
     error: null,
@@ -142,6 +161,10 @@ const reducer = (state = INITIAL_STATE, action) => {
       return state.setIn(['suggestions', 'selectedId'], 0)
                 .setIn(['suggestions', 'items'], Immutable.List([]))
                 .setIn(['search', 'query'], state.getIn(['suggestions', 'items', action.payload.selectedId, 'name']));
+      break
+    case SEARCH_ACTION_ENUM.BUY_SELL_VIEW_TOGGLED:
+      return state.setIn(['view', 'selectedView'], state.getIn(['view', 'selectedView']) === SELECT_VIEW_ENUM.BUY 
+        ? SELECT_VIEW_ENUM.SELL : SELECT_VIEW_ENUM.BUY);
       break
   }
 

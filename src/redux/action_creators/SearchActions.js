@@ -11,6 +11,7 @@ const SEARCH_ACTION_ENUM = {
   SEARCH_SUGGEST_IN_PROGRESS: 'SEARCH_SUGGEST_IN_PROGRESS',
   SEARCH_SUGGEST_CHANGED: 'SEARCH_SUGGEST_CHANGED',
   SEARCH_SUGGEST_ITEM_SELECTED: 'SEARCH_SUGGEST_ITEM_SELECTED',
+  BUY_SELL_VIEW_TOGGLED: 'BUY_SELL_VIEW_TOGGLED',
 }
 
 const FEEDBACK_MESSAGE_ENUM = {
@@ -111,4 +112,10 @@ function searchSuggestItemSelected(selectedId) {
   };
 }
 
-export { SEARCH_ACTION_ENUM, search, searchSuggest, searchSuggestChanged, searchSuggestItemSelected, };
+function buySellViewToggled() {
+  return {
+    type: SEARCH_ACTION_ENUM.BUY_SELL_VIEW_TOGGLED,
+  };
+}
+
+export { SEARCH_ACTION_ENUM, search, searchSuggest, searchSuggestChanged, searchSuggestItemSelected, buySellViewToggled};
