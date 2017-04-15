@@ -8,7 +8,7 @@ const ButtonList = ({ buttonDetails=[], title, onButtonClick }) => {
         {
          	buttonDetails.map((buttonDetail) => {
            return <li className="button-list_list_item">
-        			 <button className="button-list_list_item_button" onClick={() => onButtonClick(buttonDetail.key)}>
+        			 <button className="button-list_list_item_button" onClick={ () => onButtonClick(buttonDetail.key) }>
                 { buttonDetail.displayName }
               </button>
             </li>

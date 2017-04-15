@@ -25,7 +25,7 @@ export default class CountdownTimer extends React.Component {
 	}
 
 	componentDidMount() {
-  	  this.startTimer(this.props.endTimestamp);
+      this.startTimer(this.props.endTimestamp);
     }
 
     componentWillReceiveProps(props) {
@@ -33,11 +33,15 @@ export default class CountdownTimer extends React.Component {
       this.startTimer(props.endTimestamp)
     }
 
+    componentWillUnmount() {
+      this.endTimer();
+    }
+
 	calculateTimeLeftProperties(endTimestamp=0) {
       const currentTimestamp = Date.now();
       const millisecondsLeft = endTimestamp > 0 ? endTimestamp - currentTimestamp : 0;
       const daysLeft = Math.floor(millisecondsLeft / MILLISECONDS_IN_A_DAY);
-      const hoursLeft = daysLeft ? Math.floor(millisecondsLeft / MILLISECONDS_IN_AN_HOUR) - (daysLeft * HOURS_IN_A_DAY) : Math.floor(millisecondsLeft / MILLISECONDS_IN_AN_HOUR);
+      const hoursLeft = daysLeft > 0 ? Math.floor(millisecondsLeft / MILLISECONDS_IN_AN_HOUR) - (daysLeft * HOURS_IN_A_DAY) : Math.floor(millisecondsLeft / MILLISECONDS_IN_AN_HOUR);
       const minutesLeft = Math.floor((millisecondsLeft % MILLISECONDS_IN_AN_HOUR) / MILLISECONDS_IN_A_MINUTE);
       const secondsLeft = Math.floor((millisecondsLeft % MILLISECONDS_IN_A_MINUTE) / MILLISECONDS_IN_A_SECOND);
 
@@ -50,6 +54,9 @@ export default class CountdownTimer extends React.Component {
 	}
 
 	startTimer(endTimestamp) {
+	  if(endTimestamp < Date.now()) {
+        return;
+	  }
 	  this.timer = setInterval(() => {
 	  	const timeLeftProperties = this.calculateTimeLeftProperties(endTimestamp);
 

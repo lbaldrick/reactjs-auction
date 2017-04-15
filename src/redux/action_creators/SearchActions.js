@@ -12,6 +12,7 @@ const SEARCH_ACTION_ENUM = {
   SEARCH_SUGGEST_CHANGED: 'SEARCH_SUGGEST_CHANGED',
   SEARCH_SUGGEST_ITEM_SELECTED: 'SEARCH_SUGGEST_ITEM_SELECTED',
   BUY_SELL_VIEW_TOGGLED: 'BUY_SELL_VIEW_TOGGLED',
+  CREATE_SELL_ITEM: 'CREATE_SELL_ITEM',
 }
 
 const FEEDBACK_MESSAGE_ENUM = {
@@ -118,4 +119,11 @@ function buySellViewToggled() {
   };
 }
 
-export { SEARCH_ACTION_ENUM, search, searchSuggest, searchSuggestChanged, searchSuggestItemSelected, buySellViewToggled};
+function createSellItem(name, summary, description, buyNow, condition, model, features, purchasedDate, location, sellerNotes) {
+  return {
+    type: SEARCH_ACTION_ENUM.CREATE_SELL_ITEM,
+    payload: { name, summary, description, buyNow, condition, model, features, purchasedDate, location, sellerNotes }
+  };
+}
+
+export { SEARCH_ACTION_ENUM, search, searchSuggest, searchSuggestChanged, searchSuggestItemSelected, buySellViewToggled, createSellItem };

@@ -5,6 +5,7 @@ import Search from '../search/Search.jsx';
 import ButtonList from '../button_list/ButtonList.jsx';
 import SearchResults from '../search_results/SearchResults.jsx';
 import AuctionDetails from '../auction_details/AuctionDetails.jsx';
+import SellerItemForm from '../form/SellerItemForm.jsx';
 import { buySellViewToggled, } from '../../redux/action_creators/SearchActions';
 import { connect } from 'react-redux';
 
@@ -24,7 +25,8 @@ class EnhancedPage extends React.Component {
   onViewTypeChanged() {
     this.props.dispatch(buySellViewToggled(this.props.query));
   }
-
+   
+  //TODO add react router
   render() {
     const bodyContent = this.props.viewType === 'BUY' ? 
        <div className="enhanced-page_content_search-results">
@@ -32,7 +34,9 @@ class EnhancedPage extends React.Component {
         <Auction/>
         <AuctionDetails store={this.props.store}/>
       </div>
-      : <div> </div>;
+      : <div className="enhanced-page_content_seller-content"> 
+        <SellerItemForm store={this.props.store}/>
+      </div>;
 
     const headerContent = this.props.viewType === 'BUY' ? <Search store={this.props.store}/> : <div> </div>;
 
