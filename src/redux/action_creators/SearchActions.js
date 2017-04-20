@@ -120,10 +120,12 @@ function buySellViewToggled() {
 }
 
 function createSellItem(name, summary, description, buyNow, condition, model, features, purchasedDate, location, sellerNotes) {
-  return {
-    type: SEARCH_ACTION_ENUM.CREATE_SELL_ITEM,
-    payload: { name, summary, description, buyNow, condition, model, features, purchasedDate, location, sellerNotes }
-  };
+    return (dispatch) => {
+      restClient.post(`auction/items/create`, {
+           name, summary, description, buyNow, condition, model, features, purchasedDate, location, sellerNotes,
+        });
+    };
+   
 }
 
 export { SEARCH_ACTION_ENUM, search, searchSuggest, searchSuggestChanged, searchSuggestItemSelected, buySellViewToggled, createSellItem };

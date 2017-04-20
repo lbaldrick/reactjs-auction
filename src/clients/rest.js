@@ -1,9 +1,12 @@
 import 'whatwg-fetch';
 
-const DOMAIN_BASE = 'http://localhost:3000/';
+const DOMAIN_BASE = 'http://localhost:8084/';
 
 const REQUEST_OPTIONS =  {
-  headers: {}, 
+  headers: { 
+    Accept: 'application/json, text/plain, */*',
+    'Content-Type': 'application/json'
+  }, 
 };
 
 const REQUEST_GET_OPTIONS =  Object.assign({}, REQUEST_OPTIONS, {
@@ -38,20 +41,30 @@ class Rest {
      });
   }	
 
-  put(url) {
-	  fetch(this.createUrl(url), REQUEST_PUT_OPTIONS).then((response) => {  
+  put(url, body) {
+	  fetch(this.createUrl(url), Object.assign( { body }, REQUEST_PUT_OPTIONS)).then((response) => {  
       return response;  
-  	});
+  	}) 
+    .catch((error) => {
+        return {
+          error,
+        }
+     });
   }
 
-  post(url) {
-	  fetch(this.createUrl(url), REQUEST_POST_OPTIONS).then(function(response) {  
+  post(url, body) {
+    fetch(this.createUrl(url), Object.assign( { body: JSON.stringify(body) }, REQUEST_POST_OPTIONS)).then((response) => {  
       return response;  
-  	});
+  	})
+    .catch((error) => {
+        return {
+          error,
+        }
+     });
   }
 
   delete(url) {
-	  fetch(this.createUrl(url), REQUEST_DELETE_OPTIONS).then(function(response) {  
+	  fetch(this.createUrl(url), REQUEST_DELETE_OPTIONS).then((response) => {  
       return response;  
   	});
   }
