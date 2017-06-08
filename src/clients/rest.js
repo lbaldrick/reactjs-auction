@@ -1,6 +1,8 @@
 import 'whatwg-fetch';
 
-const DOMAIN_BASE = 'http://localhost:8084/';
+//const DOMAIN_BASE = 'http://localhost:8084/';
+
+const DOMAIN_BASE = 'http://localhost:3000/';
 
 const REQUEST_OPTIONS =  {
   headers: { 

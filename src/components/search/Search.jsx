@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import style from './SearchBar.scss';
 import { search, searchSuggest, searchSuggestChanged, searchSuggestItemSelected, } from '../../redux/action_creators/SearchActions';
-import Feedback from '../Feedback/Feedback.jsx';
-import Dropdown from '../Dropdown/Dropdown.jsx';
 import SearchBar from './SearchBar.jsx';
 
 class Search extends React.Component {
@@ -42,7 +40,7 @@ class Search extends React.Component {
     this.props.dispatch(searchSuggestItemSelected(id));
   }
 
-  selectPreviousSuggestion(selectedId, suggestionsLength) {
+  selectPreviousSuggestion(selectedId) {
     return selectedId === 0 ? selectedId : --selectedId;
   }
 

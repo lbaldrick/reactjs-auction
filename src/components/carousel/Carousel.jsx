@@ -16,10 +16,6 @@ export default class Carousel extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      images: props.images || [],
-    };
     
     this.selectedImageIndex = 0;
   }
@@ -71,7 +67,7 @@ export default class Carousel extends React.Component {
     const prevBtn = <button ref="prev-btn" className="carousel_previous --hidden" onClick={ this.onPrevious.bind(this) }></button>; 
     const btns = [prevBtn, nextBtn];
     const selectedImageIndex = this.selectedImageIndex;
-    const images = this.state.images;
+    const images = this.props.images;
     const carouselImages = [];
 
     images.forEach((image, index) => {

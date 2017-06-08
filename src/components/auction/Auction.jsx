@@ -4,9 +4,6 @@ import AuctionControls from '../auction_controls/AuctionControls';
 import Carousel from '../carousel/Carousel';
 import PieTimer from '../pie_timer/PieTimer';
 import CountdownTimer from '../countdown_timer/CountdownTimer';
-import x from '../../../img/Nintendo-3DS-AquaOpen.jpg';
-import y from '../../../img/Screenshot1.png';
-import z from '../../../img/Screenshot2.png';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
@@ -14,7 +11,7 @@ const mapStateToProps = (state) => {
   const endTimestamp = state.getIn(['auctionDetails', 'endTimestamp']);
 
   return {
-    images: [x, y, z],
+    images: state.getIn(['auctionDetails', 'images']),
     endTimestamp,
     totalTime: endTimestamp - startTimestamp,
   }

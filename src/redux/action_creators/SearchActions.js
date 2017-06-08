@@ -11,19 +11,20 @@ const SEARCH_ACTION_ENUM = {
   SEARCH_SUGGEST_IN_PROGRESS: 'SEARCH_SUGGEST_IN_PROGRESS',
   SEARCH_SUGGEST_CHANGED: 'SEARCH_SUGGEST_CHANGED',
   SEARCH_SUGGEST_ITEM_SELECTED: 'SEARCH_SUGGEST_ITEM_SELECTED',
+  SEARCH_RESULT_ITEM_SELECTED: 'SEARCH_RESULT_ITEM_SELECTED',
   BUY_SELL_VIEW_TOGGLED: 'BUY_SELL_VIEW_TOGGLED',
   CREATE_SELL_ITEM: 'CREATE_SELL_ITEM',
-}
+};
 
 const FEEDBACK_MESSAGE_ENUM = {
   QUERY_TOO_SHORT: 'Query must be at least 2 characters long',
-}
+};
 
 const FEEDBACK_TYPES_ENUM = {
   WARN: 'warning',
   ERROR: 'error',
   SUCCESS: 'success',
-}
+};
 
 function search(query) {
  return (dispatch) => {
@@ -113,6 +114,13 @@ function searchSuggestItemSelected(selectedId) {
   };
 }
 
+function searchResultItemSelected(selectedId) {
+    return {
+        type: SEARCH_ACTION_ENUM.SEARCH_RESULT_ITEM_SELECTED,
+        payload: { selectedId },
+    };
+}
+
 function buySellViewToggled() {
   return {
     type: SEARCH_ACTION_ENUM.BUY_SELL_VIEW_TOGGLED,
@@ -128,4 +136,4 @@ function createSellItem(name, summary, description, buyNow, condition, model, fe
    
 }
 
-export { SEARCH_ACTION_ENUM, search, searchSuggest, searchSuggestChanged, searchSuggestItemSelected, buySellViewToggled, createSellItem };
+export { SEARCH_ACTION_ENUM, search, searchSuggest, searchSuggestChanged, searchSuggestItemSelected, searchResultItemSelected, buySellViewToggled, createSellItem };

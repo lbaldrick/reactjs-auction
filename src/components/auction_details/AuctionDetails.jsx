@@ -3,8 +3,6 @@ import style from './AuctionDetails.scss';
 import AccordianMenu from '../accordian_menu/AccordianMenu';
 import { connect } from 'react-redux';
 import BiddingHistory from './BiddingHistory';
-import ItemSpecifics from './ItemSpecifics';
-import SellerInformation from './SellerInformation';
 import ItemDescription from './ItemDescription';
 
 const MENU_ITEMS = [

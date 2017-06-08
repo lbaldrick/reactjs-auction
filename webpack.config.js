@@ -31,10 +31,15 @@ module.exports = {
              { 
                test: /\.scss?/, loader: "style!css!autoprefixer!sass" 
              },
-             {
-               test: /\.(png|jpg)$/, 
-	             loader: 'url-loader?limit=8192'
-             },
+             // {
+             //   test: /\.(png|jpg)$/,
+	          //    loader: 'url-loader?limit=8192'
+             // },
+            {
+                test: /\.(jpg|png|svg)$/,
+                loader: 'file',
+                include: './img'
+            },
              { 
                test: /\.json$/, 
                loader: "json-loader"

@@ -14,7 +14,7 @@ export default class Table extends React.Component {
 			<TableBody
 			columnsConfig={ this.props.columnsConfig }
 		    records={ this.props.records }
-		    onRowClick={ this.props.onRowClick }
+			onRowClicked={ this.props.onRowClicked }
 		    columnOrder={ this.props.headers.map((column) => column.id) }
 		    />
 		</div>
