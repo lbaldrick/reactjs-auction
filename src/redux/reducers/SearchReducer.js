@@ -172,7 +172,7 @@ const reducer = (state = INITIAL_STATE, action) => {
           return action.payload.selectedId === record.id;
         }) || Immutable.Map({});
 
-        state.set(auctionDetails, selectedRecord);
+        return state.set('auctionDetails',  Immutable.Map(selectedRecord));
       break;
     case SEARCH_ACTION_ENUM.BUY_SELL_VIEW_TOGGLED:
       return state.setIn(['view', 'selectedView'], state.getIn(['view', 'selectedView']) === SELECT_VIEW_ENUM.BUY 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import style from './SearchBar.scss';
+import style from './Search.scss';
 import { search, searchSuggest, searchSuggestChanged, searchSuggestItemSelected, } from '../../redux/action_creators/SearchActions';
 import SearchBar from './SearchBar.jsx';
 

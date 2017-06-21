@@ -25,7 +25,7 @@ const MENU_ITEMS = [
 
 const mapStateToProps = (state) => {
   return {
-    historyItems: state.getIn(['auctionDetails', 'history']).toJS(),
+    historyItems: state.getIn(['auctionDetails', 'history']),
     description: state.getIn(['auctionDetails', 'description']),
     title: state.getIn(['auctionDetails', 'title']),
   }
