@@ -6,6 +6,6 @@ const opts = {
     cors_headers: ["Content-Type", "Location"],
      };
 
-can = canned('./mocks', opts);
+can = canned(__dirname + '/mocks', opts);
 
 http.createServer(can).listen(3000);

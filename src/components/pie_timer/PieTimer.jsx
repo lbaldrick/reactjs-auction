@@ -20,22 +20,12 @@ export default class PieTimer extends React.Component {
         const circumference = this.calculateCircumference(props.radius);
         const tickWidth = this.calculateTickWidth(circumference, totalTime);
         const strokeDashOffset = this.calculateStrokeDashOffset(totalTime, tickWidth);
+        const timeRemaining = this.props.timeRemaining || this.props.totalTime;
+        const animationStyle = `draw ${timeRemaining}s linear`;
 
         this.setState({
             strokeDashOffset,
             radius,
-            style: {
-                animation: 0,
-            },
-        });
-    }
-
-    componentDidUpdate() {
-        const timeRemaining = this.props.timeRemaining || this.props.totalTime;
-        const animationStyle = `draw ${timeRemaining}s linear`;
-        this.setState({
-            strokeDashOffset: this.state.strokeDashOffset,
-            radius: this.state.radius,
             style: {
                 animation: animationStyle,
             },
@@ -66,12 +56,12 @@ export default class PieTimer extends React.Component {
     render() {
         const radius = this.state.radius;
 
-  	return <div className="pie-timer">
-  	  <svg viewBox="-1 -1 34 30">
-        <circle className="pie-timer_border" cx="14" cy="14" fill="black" r={radius * 2  + 1}/>
-        <circle className="pie-timer_underlay" cx="14" cy="14" fill="red" r={radius * 2}/>
-        <circle ref="timer" style={ this.state.style } className="pie-timer_timer" cx="14" cy="14" fill="transparent" r={radius}/>
-      </svg>
-    </div>
+        return <div className="pie-timer">
+          <svg viewBox="-1 -1 34 30">
+            <circle className="pie-timer_border" cx="14" cy="14" fill="black" r={radius * 2  + 1}/>
+            <circle className="pie-timer_underlay" cx="14" cy="14" fill="red" r={radius * 2}/>
+            <circle ref="timer" style={ this.state.style } className="pie-timer_timer" cx="14" cy="14" fill="transparent" r={radius}/>
+          </svg>
+        </div>
   }
 }

@@ -11,10 +11,12 @@ const TableBody = ({ records, columnsConfig, columnOrder, onRowClicked }) => {
 		{
 			records.map((record) => {
 				return <TableRow
+				key={ record.id }
 				rowId={ record.id }
 				onRowClicked={ onRowClicked }
 				cells={ columnOrder.map((key) => {
-							return { 
+							return {
+								id: key,
 								displayName: record[key],
 								style: columnsConfig ? columnsConfig.getIn([key, 'style']).toObject() : defaultColumnConfig,
 							};

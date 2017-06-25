@@ -4,6 +4,8 @@ $base-color: #212F3D;
   border: black solid 0.1em;
   border-right: 0;
   background-color: $base-color;
+  animation: slideIn 300ms forwards;
+  z-index: 1;
 
   &_time-remaining {
   	display: flex;
@@ -21,5 +23,21 @@ $base-color: #212F3D;
   
   .pie-timer {
     margin: -6px 0 0 6px;
+  }
+
+  &.--visible {
+    animation: slideOut 300ms forwards;
+  }
+
+  @keyframes slideOut {
+     100% {
+       transform: translateX(0em);
+     }
+   }
+
+  @keyframes slideIn {
+    100% {
+      transform: translateX(-18em);
+    }
   }
 }

@@ -31,7 +31,7 @@ class EnhancedPage extends React.Component {
     const bodyContent = this.props.viewType === 'BUY' ? 
        <div className="enhanced-page_content_search-results">
         <SearchResults store={this.props.store}/>
-        <Auction/>
+        <Auction store={this.props.store}/>
         <AuctionDetails store={this.props.store}/>
       </div>
       : <div className="enhanced-page_content_seller-content"> 

@@ -24,8 +24,6 @@ $base-color: #212F3D;
       list-style: none;
       padding: 0;
       margin: 0;
-      //TODO use transform: translate
-      transition: left 2s ease;
       
       img {
         width: 18em;
@@ -37,13 +35,11 @@ $base-color: #212F3D;
       }
 
       &.--hidden-right {
-          //TODO use trasform: translate
-	      left: 18em;
+	      transform: translate(-18em, 0);
       }
 
       &.--hidden-left {
-        //TODO use transform: translate
-        left: -18em;
+        transform: translate(18em, 0);
       }
     }
   }

@@ -4,22 +4,28 @@ import AuctionControls from '../auction_controls/AuctionControls';
 import Carousel from '../carousel/Carousel';
 import PieTimer from '../pie_timer/PieTimer';
 import CountdownTimer from '../countdown_timer/CountdownTimer';
+import { searchResultItemSelected, } from '../../redux/action_creators/SearchActions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
-  //const startTimestamp = state.getIn(['auctionDetails', 'startTimestamp']);
-  //const endTimestamp = state.getIn(['auctionDetails', 'endTimestamp']);
-  const startTimestamp = Date.now();
-  const endTimestamp = startTimestamp + (Math.floor(Math.random() * 60000) + 5000);
+  const startTimestamp = state.getIn(['auctionDetails', 'startTimestamp']);
+  const endTimestamp = state.getIn(['auctionDetails', 'endTimestamp']);
+  const selectedId = state.getIn(['search', 'selectedSearchResultId']);
 
   return {
     images: state.getIn(['auctionDetails', 'images']),
     endTimestamp,
     totalTime: (endTimestamp - startTimestamp) / 1000,
+    selectedId,
   }
 };
 
 class Auction extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this._isVisible = true;
+  }
 
   buyNow() {
     console.log('buy now');
@@ -34,12 +40,32 @@ class Auction extends React.Component {
   }
 
   watch() {
-    console.log('watch');
+      console.log('watch');
+  }
+
+  componentWillUpdate(props) {
+    if (props.selectedId < 1) {
+        this._isVisible = false;
+    } else if (props.selectedId === this.props.selectedId && this._isVisible){
+        this._isVisible = false;
+    } else {
+        this._isVisible = true;
+    }
+  }
+
+  componentDidUpdate() {
+    requestAnimationFrame(() => {
+      if(this._isVisible) {
+          this.refs['auction'].classList.add("--visible");
+      } else {
+          this.refs['auction'].classList.remove("--visible");
+      }
+    });
   }
 
   render() {
      return ( 
-       <div className='auction'>
+       <div ref='auction' className='auction'>
          <Carousel images={ this.props.images } />
          <div className='auction_time-remaining'>
            <CountdownTimer endTimestamp={ this.props.endTimestamp } />

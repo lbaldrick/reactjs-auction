@@ -12,12 +12,16 @@ const RIGHT_HIDDEN_CLASS = '--hidden-right';
 
 const HIDDEN_CLASS = '--hidden';
 
-export default class Carousel extends React.Component {
+export default class Carousel extends React.PureComponent {
 
   constructor(props) {
     super(props);
     
     this.selectedImageIndex = 0;
+  }
+
+  componentWillReceiveProps() {
+      this.selectedImageIndex = 0;
   }
 
   handleNavBtnClick(btnType) {
@@ -53,11 +57,11 @@ export default class Carousel extends React.Component {
       prevBtn.classList.add(HIDDEN_CLASS);
     }
 
-    if (selectedImageIndex === this.state.images.length - 1) {
+    if (selectedImageIndex === this.props.images.size - 1) {
       nextBtn.classList.add(HIDDEN_CLASS);
     }
 
-    if (selectedImageIndex === this.state.images.length - 2 && previousImageIndex === this.state.images.length - 1) {
+    if (selectedImageIndex === this.props.images.size - 2 && previousImageIndex === this.props.images.size - 1) {
       nextBtn.classList.remove(HIDDEN_CLASS);
     }
   }
@@ -65,8 +69,7 @@ export default class Carousel extends React.Component {
   render() { 
     const nextBtn = <button ref="next-btn" className="carousel_next" onClick={ this.onNext.bind(this) }></button>;
     const prevBtn = <button ref="prev-btn" className="carousel_previous --hidden" onClick={ this.onPrevious.bind(this) }></button>; 
-    const btns = [prevBtn, nextBtn];
-    const selectedImageIndex = this.selectedImageIndex;
+    const btns = this.props.images.size > 1 ? [prevBtn, nextBtn] : [];
     const images = this.props.images;
     const carouselImages = [];
 
@@ -80,8 +83,8 @@ export default class Carousel extends React.Component {
     return <div className="carousel">
           { btns }
       <div className="carousel_image-container">
-        <ul className="carousel_image-list" ref={ (imgHolder) => this.imgHolder = imgHolder }>
-          { carouselImages }  
+        <ul className="carousel_image-list">
+          { carouselImages }
         </ul>
       </div>
     </div>

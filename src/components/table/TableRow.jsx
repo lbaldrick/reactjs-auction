@@ -8,7 +8,8 @@ const TableRow = ({ rowId, cells, onRowClicked }) => {
 	> 
 	{ 
        cells.map((cell) => {
-        return <TableCell 
+        return <TableCell
+		  key={`${rowId}-${cell.id}`}
           displayName={ cell.displayName }
           style={ cell.style }
           />

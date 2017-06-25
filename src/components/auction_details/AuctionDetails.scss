@@ -5,4 +5,15 @@ $base-color: #212F3D;
   background: $base-color;
   border: black solid 0.1em;
   color: white;
+  transform: translateX(-40em);
+
+  &.--visible {
+    animation: slideOut 300ms forwards;
+  }
+
+  @keyframes slideOut {
+    100% {
+      transform: translateX(0em);
+    }
+  }
 }

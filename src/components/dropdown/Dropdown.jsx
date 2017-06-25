@@ -7,7 +7,7 @@ const dropdown = ({ items, selectedId, onItemClicked }) => {
 	   {
 	      items.map((item) => {
 	      	const id = item.get('id');
-	      	return <li className={ selectedId === id ? 'dropdown_list_item dropdown_list_item--selected' : 'dropdown_list_item' } 
+	      	return <li key={id} className={ selectedId === id ? 'dropdown_list_item dropdown_list_item--selected' : 'dropdown_list_item' }
 	      	onClick={ onItemClicked.bind(this, id) }>
 	      	   { item.get('name') }
 	      	</li>
