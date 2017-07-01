@@ -1,13 +1,18 @@
 var webpack = require('webpack');
 var path = require("path");
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
   entry: {
+
     app: [ 
       'whatwg-fetch',
-      './src/index'
+      './src/index',
+        // For hot style updates
+        'webpack/hot/dev-server',
+
+        // The script refreshing the browser on hot updates
+        'webpack-dev-server/client?http://localhost:8080',
     ],
     vendor: ['react', 'react-dom'],
   },
@@ -21,27 +26,17 @@ module.exports = {
                 },
                 include: path.join(__dirname, 'src')
 	            },
-              {  
-                test: /\.jsx?/,
-                exclude: /node_modules/,
-                loaders: ['babel-loader'],
-                include: path.join(__dirname, 'src')
-              },
-              // Load SCSS
-             { 
-               test: /\.scss?/, loader: "style!css!autoprefixer!sass" 
+             {
+               test: /\.scss?/,
+               loader: "style!css!autoprefixer!sass"
              },
-             // {
-             //   test: /\.(png|jpg)$/,
-	          //    loader: 'url-loader?limit=8192'
-             // },
-            {
+             {
                 test: /\.(jpg|png|svg)$/,
                 loader: 'file',
                 include: './img'
-            },
-             { 
-               test: /\.json$/, 
+             },
+             {
+               test: /\.json$/,
                loader: "json-loader"
              }
            ]
@@ -54,16 +49,8 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  devServer: {
-    contentBase: './dist',
-    hot: true
-  },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', Infinity),
-    // new webpack.DefinePlugin({
-    // 'process.env': {
-    //   'NODE_ENV': JSON.stringify('production')
-    // }
-    //})
+      new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', Infinity),
+      new webpack.HotModuleReplacementPlugin(),
     ],
 };

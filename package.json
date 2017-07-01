@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js \"test/**/*@(.js|.jsx)\"",
     "test:watch": "npm run test -- --watch",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "start": "node server"
   },
   "babel": {
     "presets": [
@@ -41,6 +42,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "express": "^4.15.3",
+    "http-proxy": "^1.16.2",
     "immutable": "^3.8.1",
     "json-loader": "^0.5.4",
     "lodash": "4.17.4",

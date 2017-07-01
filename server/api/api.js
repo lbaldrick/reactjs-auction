@@ -8,4 +8,4 @@ const opts = {
 
 can = canned(__dirname + '/mocks', opts);
 
-http.createServer(can).listen(3000);
+http.createServer(can).listen(3003);

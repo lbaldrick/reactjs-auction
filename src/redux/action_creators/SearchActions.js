@@ -51,7 +51,7 @@ function searchSuggest(query) {
       return Promise.resolve(dispatch(searchSuggestFailure(feedback, type, query)));
     }
 
-    restClient.get(`auction/search/suggest/${query}`)
+    restClient.get(`auction/search/suggest/${query}/`)
       .then((responseItems) => dispatch(searchSuggestSuccess(responseItems.suggestions, query)))
       .catch((error) => dispatch(searchSuggestFailure(error)));
   }
