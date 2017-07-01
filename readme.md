@@ -2,19 +2,16 @@ This project was set up to help me learn reactjs and redux. I use the project as
 
 To run app:
 
+- webpack-dev-server --inline --hot - to have hot reload or perferrably run 'node server' and project will be served on
+  localhost:3003 proxying through to webpack-dev-server
 
-- webpack-dev-server --inline --hot - to have hot reload
-
-- node server/api/api.js - run mock server with mock endpoint
+- node server/api/api.js - run mock server with mock endpoints servered on localhost:3000
 
 - webpack - to bundle code to bundle.js
-
-- webpack-dev-server - to start dev server
 
 
 TODO:
 
-- Add expressjs server
 - Dockerise app
 - Add jest tests
 - Upgrade to latest version of react
